@@ -1,0 +1,19 @@
+git add .
+git commit -m "อัปเดตไฟล์ล่าสุด"
+git push
+ื
+// var
+var x = 5;
+var x = 10; // ประกาศซ้ำได้ (เสี่ยง error)
+console.log(x); // 10
+
+// let
+let y = 5;
+// let y = 10; ❌ จะ error เพราะห้ามประกาศซ้ำ
+y = 10; // แต่เปลี่ยนค่าได้
+console.log(y); // 10
+
+// const
+const z = 5;
+// z = 10; ❌ เปลี่ยนค่าไม่ได้
+console.log(z); // 5

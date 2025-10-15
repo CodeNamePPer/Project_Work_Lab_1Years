@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Inconsolata:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Inconsolata:wght@200..900&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+html {
+      scroll-behavior: smooth;
+    }
+body{
+    font-family: "IBM Plex Sans Thai", sans-serif;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    
+}
+a{
+    text-decoration: none;
+    color: #073ff79f;
+}
+h1{
+    color: #f95bb2;
+    margin: auto;
+}
+/* p{
+    background-color: #dadada;
+    border-radius: 0.5rem;
+    padding: 10px;
+} */
+.logo-img{
+    width: 9rem; 
+    margin: 2rem;
+    /* border: #ecc0c0 solid 2px;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 4rem; */
+
+}
+
+strong{
+  color: #e6007e;          
+  font-weight: 700;
+  
+}
+hr{
+    margin: 0;
+    width: 100vw;
+}
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;  
+    border: #e6007e 2px solid;
+    color: white;
+    background: rgba(255, 255, 255, 0.822);
+    padding: 10px;
+    border-radius: 1rem;
+    margin: auto;
+    width: 85vw;
+    font-size: 1.5rem;
+    text-align: center;
+    height: auto;
+}
+#btn-nav:hover{
+    background-color: white;
+    color: #e6007e;
+    border: #e6007e solid 2px;
+}
+.btn-link-1{
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    margin: 5px;
+}
+
+.btn-link-2{
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    margin: 5px;
+}
+
+.btn-link-3{
+    background-color: orangered;
+    color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    margin: 5px;
+}
+.btn-link-4{
+    background-color: #FBC02D;
+    color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    margin: 5px;
+}
+
+.btn-link-5{
+    background-color: #fc02fc;
+    color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    margin: 5px;
+}
+
+.link-ref{
+    padding: 1rem;
+    margin: auto;
+}
+.box-profile-main{
+    height:auto;
+    width: 85vw;
+
+    align-items: center;
+    padding: 10px;
+    margin: auto;         
+                     
+    text-align:center;
+    font-size: larger;
+
+    
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 2rem;
+    border: 2px solid #e6007e;
+      
+}
+
+
+
+.about-video-box{
+    text-align: center;
+    border: 2px solid #e6007e;
+    border-radius: 2rem;
+    width: 85vw;
+    height: auto;
+    margin: auto;
+    padding: 1rem;
+
+    font-size: larger;
+}
+
+
+.hobbies-box {
+  
+  flex-wrap: wrap;
+  text-align: center;
+  width: 85vw;
+  margin: auto;
+  padding: 1rem;
+  border: 2px solid #e6007e;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+}
+
+.hobbies-circle {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.hobbies-circle img {
+  width: 15rem;
+  height: 15rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border: #e6007e solid 2px;
+  margin-bottom: 0.5rem;
+}
+
+
+.box-profile-table{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    width: 85vw;
+    height: auto;
+    margin: auto;
+    padding: 1rem;
+    border: 2px solid #e6007e;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+}
+thead,th,td{
+    background-color: #f89ccfb7;
+    border: 1px solid #e6007e;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+table{
+    margin: auto;
+    color: black;
+    font-weight: 500;
+}
+.link-table:hover{
+    background-color: white;
+    border: #e6007e solid 2px;
+}
+
+.btn-nextpage{
+    background-color: #e6007e;
+    color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    margin: 10px;
+    border:#e6007e solid 2px;
+    font-weight: 900;
+}
+.btn-nextpage:hover{
+    background-color: #ffffff;
+    color: #e6007e;
+}
+
+.box-contact{
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    padding: 5px;
+    width:  100vw;
+    height:auto;
+    background-color: #e6007e; 
+    color: white;
+    font-size: 1rem;
+}
+.box-contact a{
+    margin: 1rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    padding: 0.5rem;
+    font-weight: 600;
+}
+
+.box-contact a:hover{
+    color: #e6007e;
+    border-radius: 1rem;
+    background-color: white;
+    
+}
+
+@media (max-width: 768px) {
+  .navbar, .box-profile-main, .about-video-box, .hobbies-box, .box-profile-table {
+      width: 95vw;
+      font-size: 1rem;
+  }
+  .hobbies-circle {
+      flex-direction: column;
+      gap: 1rem;
+  }
+  .hobbies-circle img {
+      width: 7rem;
+      height: 7rem;
+  }
+}

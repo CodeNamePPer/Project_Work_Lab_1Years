@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condition</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+        }
+        p{
+           font-size: larger; 
+        }
+        h3{
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    function ticketcal(){
+        const height = Number(document.getElementById("height").value);
+        if(height<=130){
+            document.getElementById("price-ticket").textContent = "Ticket Price : 50 THB";
+        }else{
+            document.getElementById("price-ticket").textContent = "Ticket Price : 100 THB";
+        }
+    } 
+    
+    
+    function incomecal(){
+        const salary = Number(document.getElementById("salary").value);
+        const commission = Number(document.getElementById("commission").value);
+        const income = salary + commission;
+        console.log("income =",income)
+        if(income<=10000){
+            document.getElementById("providentfund").textContent = "Provident Fund : " + income + " THB";
+        }
+        if(income > 10000 && income < 20000){
+            const deduct = income * 0.02
+            console.log("deduct = ",deduct)
+            const providentfund = income - deduct;
+            document.getElementById("providentfund").textContent = "Provident Fund -2 % : " + providentfund + " THB";
+        }
+        if(income > 20000){
+            const deduct = income * 0.05
+            console.log("deduct = ",deduct)
+            const providentfund = income - deduct;
+            document.getElementById("providentfund").textContent = "Provident Fund -5 % : " + providentfund + " THB";
+
+        }
+    }
+    function deductcal(){
+            const salary = Number(document.getElementById("salary").value);
+            const commission = Number(document.getElementById("commission").value);
+            const income = salary + commission;
+        console.log("income =",income)
+        if(income<=10000){
+            document.getElementById("providentfund").textContent = "No money deducted";
+        }
+        if(income > 10000 && income < 20000){
+            const deduct = income * 0.02
+            document.getElementById("providentfund").textContent = "Provident Fund Deduct -2 % : " + deduct + " THB";
+        }
+        if(income > 20000){
+            const deduct = income * 0.05
+            document.getElementById("providentfund").textContent = "Provident Fund Deduct : -5 % " + deduct + " THB";
+
+        }
+    }
+    
+
+    function dateselect(){
+        const numberselect = parseInt(document.getElementById("days").value);
+        console.log(numberselect)
+        switch(numberselect){
+            case 1:document.getElementById("dayselect").textContent = "Day = Monday";    break;
+            case 2:document.getElementById("dayselect").textContent = "Day = Tuesday";   break;
+            case 3:document.getElementById("dayselect").textContent = "Day = Wednesday"; break;
+            case 4:document.getElementById("dayselect").textContent = "Day = Thursday";  break;
+            case 5:document.getElementById("dayselect").textContent = "Day = Friday";    break;
+            case 6:document.getElementById("dayselect").textContent = "Day = Saturday";  break;
+            case 7:document.getElementById("dayselect").textContent = "Day = Sunday";    break;
+            default:
+            document.getElementById("dayselect").textContent = "Day = Wrong Day";
+        }
+    }
+    
+    
+    </script>
+    <h1>Price Ticket Museum</h1>
+    <h3>Height <= 130 Cm. Price: 50 THB </h3>
+    <h3>Height  >  130 Cm. Price: 100 THB </h3>
+    <input type="number" id="height" placeholder="input height Cm.">
+    <button onclick="ticketcal()">Enter</button>
+    <p id="price-ticket">Ticket Price :</p>
+
+    <h1>Provident Fund JavaJava Cops. ( 2 function )</h1>
+    <input type="number" id="salary" placeholder="input salary">
+    <input type="number" id="commission" placeholder="input commission">
+    <button onclick="incomecal()">Enter</button><button onclick="deductcal()">ShowDeduct</button>
+    <p id="providentfund">Provident Fund :</p>
+
+    <h1>Date Select</h1>
+    <h3>Select Date Number 1-7 </h3>
+    <!-- <select name="days" id="days">
+        <option value="--เลือก--"></option>
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+        <option value="6" >6</option>
+        <option value="7" >7</option>
+    </select> -->
+    <input type="number" id="days" placeholder="input Number 1-7">
+    <button onclick="dateselect()">Enter</button>
+    <p id="dayselect">Day =</p>
+</body>
+</html>

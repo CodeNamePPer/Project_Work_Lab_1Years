@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<title>Drag & Drop Zones</title>
+<style>
+  *{box-sizing:border-box;font-family:system-ui}
+  .board{display:flex;gap:16px;max-width:800px;margin:40px auto}
+  .col{flex:1;border:2px dashed #bbb;border-radius:12px;padding:12px;min-height:220px}
+  .col.dragover{border-color:#1e88e5;background:#f3f9ff}
+  .card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:12px;margin:8px 0;cursor:grab}
+</style>
+</head>
+<body>
+  <div class="board">
+    <div class="col" id="todo">
+      <div class="card" draggable="true">กล่อง A</div>
+      <div class="card" draggable="true">กล่อง B</div>
+    </div>
+    <div class="col" id="doing"></div>
+    <div class="col" id="done"></div>
+  </div>
+
+<script>
+  // 1) ตั้งค่า dragstart ให้ "การ์ด"
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('dragstart', e=>{
+      e.dataTransfer.setData('text/plain', 'dragging');     // ใส่อะไรก็ได้
+      e.dataTransfer.setDragImage(card, 10, 10);            // (เลือก) เงาเวลาลาก
+      card.classList.add('dragging');
+    });
+    card.addEventListener('dragend', ()=> card.classList.remove('dragging'));
+  });
+
+  // 2) ตั้งค่าโซนรับ (columns)
+  document.querySelectorAll('.col').forEach(col=>{
+    col.addEventListener('dragover', e=>{
+      e.preventDefault();               // ต้องมีเพื่ออนุญาตให้ drop
+      col.classList.add('dragover');
+      // หาตำแหน่งแทรกก่อน/หลังการ์ด
+      const dragging = document.querySelector('.dragging');
+      const afterElem = [...col.querySelectorAll('.card:not(.dragging)')]
+        .find(card => e.clientY <= card.getBoundingClientRect().top + card.offsetHeight/2);
+      afterElem ? col.insertBefore(dragging, afterElem) : col.appendChild(dragging);
+    });
+    col.addEventListener('dragleave', ()=> col.classList.remove('dragover'));
+    col.addEventListener('drop', ()=> col.classList.remove('dragover'));
+  });
+</script>
+</body>
+</html>

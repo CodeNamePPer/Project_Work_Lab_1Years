@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paper — Portfolio</title>
+  <meta name="description" content="Paper (Eittiwat) — design‑led developer portfolio" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Tokens (Apple‑like minimal) ===== */
+    :root{
+      --brand:#e6007e; /* Paper pink for accents only */
+      --bg:#ffffff; --text:#0a0a0a; --muted:#6e6e73; --line:#e5e5ea;
+      --panel:#f5f5f7; --panel-dark:#1d1d1f; --radius:22px; --max:1100px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#000000; --text:#f5f5f7; --muted:#a1a1a6; --line:#2c2c2e; --panel:#111113; --panel-dark:#111113; }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; background:var(--bg); color:var(--text); font-family:"IBM Plex Sans Thai", -apple-system, system-ui, Segoe UI, Roboto, sans-serif;}
+    img{display:block; max-width:100%; height:auto}
+    a{color:inherit; text-decoration:none}
+
+    /* ===== Nav (simple, roomy) ===== */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(12px); background:color-mix(in srgb, var(--bg) 82%, transparent); border-bottom:1px solid var(--line)}
+    .nav-wrap{max-width:var(--max); margin:auto; padding:14px 20px; display:flex; align-items:center; gap:16px}
+    .brand{font-weight:700; letter-spacing:.2px}
+    .spacer{flex:1}
+    .nav a{padding:8px 12px; border-radius:10px}
+    .nav a:hover{background:var(--panel)}
+    .cta-btn{padding:10px 14px; border-radius:12px; background:var(--text); color:var(--bg)}
+
+    /* ===== Hero (huge, clean) ===== */
+    .hero{border-bottom:1px solid var(--line);}
+    .hero-wrap{max-width:var(--max); margin:auto; padding:72px 20px 84px; display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center}
+    @media (max-width:920px){ .hero-wrap{grid-template-columns:1fr; padding:56px 20px 64px} }
+    .eyebrow{color:var(--muted); font-weight:600; letter-spacing:.2px}
+    .headline{font-size:clamp(2.2rem, 5vw + .2rem, 4.2rem); line-height:1.06; letter-spacing:-.02em; margin:.35rem 0 1rem; font-weight:800}
+    .lede{color:var(--muted); font-size:clamp(1rem, .6vw + .8rem, 1.175rem); max-width:60ch}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:14px; border:1px solid var(--line); background:var(--bg)}
+    .btn.primary{background:var(--text); color:var(--bg); border-color:var(--text)}
+
+    .hero-media{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+    .hero-media > .frame{aspect-ratio: 16/10; display:grid; place-items:center;}
+    .chip{display:inline-block; padding:6px 10px; border-radius:999px; background:var(--bg); border:1px solid var(--line); color:var(--muted); font-size:.85rem}
+
+    /* ===== Sections ===== */
+    .section{max-width:var(--max); margin:0 auto; padding:72px 20px}
+    .section h2{font-size:clamp(1.6rem, 1.4vw + .8rem, 2.4rem); line-height:1.15; margin:0 0 8px}
+    .sub{color:var(--muted); margin:0 0 24px}
+
+    /* ===== Product tiles (Apple vibe) ===== */
+    .tiles{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+    .tile{grid-column:span 6; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; transition:transform .25s ease}
+    .tile:hover{transform:translateY(-4px)}
+    .tile .media{aspect-ratio: 16/10; background:#000; overflow:hidden}
+    .tile .media img{width:100%; height:100%; object-fit:cover; transform:scale(1.02); transition:transform .6s ease}
+    .tile:hover .media img{transform:scale(1.06)}
+    .tile .body{padding:18px}
+    .tile h3{margin:.2rem 0 .4rem; font-size:1.35rem}
+    .tile p{color:var(--muted); margin:0}
+    @media (max-width:900px){ .tile{grid-column:span 12} }
+
+    /* ===== Feature band (big contrast panel) ===== */
+    .band{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .band .wrap{max-width:var(--max); margin:auto; padding:64px 20px; display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center}
+    @media (max-width:900px){ .band .wrap{grid-template-columns:1fr} }
+    .band .card{background:var(--bg); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+
+    /* ===== Footer ===== */
+    footer{border-top:1px solid var(--line); color:var(--muted); padding:40px 20px; text-align:center}
+
+    /* ===== Small motion (reveals) ===== */
+    @media (prefers-reduced-motion: no-preference){
+      .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+      .reveal.in{opacity:1; transform:translateY(0)}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-wrap">
+      <div class="brand">Paper</div>
+      <div class="spacer"></div>
+      <a href="#work">ผลงาน</a>
+      <a href="#about">เกี่ยวกับ</a>
+      <a href="#contact">ติดต่อ</a>
+      <a class="cta-btn" href="#work">ชมผลงาน</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-wrap">
+      <div>
+        <div class="eyebrow">Portfolio</div>
+        <h1 class="headline">สวย สะอาด <br/>และชัดเจนแบบ Apple‑style</h1>
+        <p class="lede">โฟกัสคอนเทนต์ ให้ภาพใหญ่ หัวข้อใหญ่ เว้นจังหวะสบายตา ปุ่มเรียบแต่ชัด และใช้สีแบรนด์ <strong>#e6007e</strong> เฉพาะจุดสำคัญ</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#work">ดูโปรเจกต์เด่น</a>
+          <a class="btn" href="#contact">ติดต่อ</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="frame">
+          <div>
+            <div class="chip">Featured • KAB Shop</div>
+            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop" alt="Preview"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TILES / WORK -->
+  <section class="section" id="work">
+    <h2 class="reveal">ผลงานเด่น</h2>
+    <p class="sub reveal">คัดเฉพาะงานที่โชว์ดีไซน์สะอาด อ่านง่าย และแอนิเมชันนุ่มนวล</p>
+    <div class="tiles">
+      <article class="tile reveal">
+        <div class="media"><img loading="lazy" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop" alt="Timeline"/></div>
+        <div class="body">
+          <h3>Profile Timeline</h3>
+          <p>ไมโครอินเตอร์แอ็กชัน + สครอลรีวีล</p>
+        </div>
+      </article>
+      <article class="tile reveal">
+        <div class="media"><img loading="lazy" src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1600&auto=format&fit=crop" alt="System"/></div>
+        <div class="body">
+          <h3>Design System</h3>
+          <p>สเกลได้ คงเส้นคงวา พร้อมโทนแบรนด์</p>
+        </div>
+      </article>
+      <article class="tile reveal">
+        <div class="media"><img loading="lazy" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1600&auto=format&fit=crop" alt="Shop"/></div>
+        <div class="body">
+          <h3>KAB Shop</h3>
+          <p>PHP • MySQL • JS — โฟลว์ซื้อของลื่น</p>
+        </div>
+      </article>
+      <article class="tile reveal">
+        <div class="media"><img loading="lazy" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop" alt="Calculator"/></div>
+        <div class="body">
+          <h3>Grade Calculator</h3>
+          <p>เรียบง่าย ชัดเจน ใช้งานไว</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FEATURE BAND -->
+  <section class="band" aria-label="Highlights">
+    <div class="wrap">
+      <div class="card reveal">
+        <h3 style="margin:0 0 .5rem">โทนและตัวอักษร</h3>
+        <p class="sub" style="margin:0">ตัวอักษรใหญ่ โล่งสบาย สีเทาอ่อนบนพื้นขาว/ดำ ให้ความรู้สึกพรีเมียมแบบ Apple</p>
+      </div>
+      <div class="card reveal">
+        <h3 style="margin:0 0 .5rem">แอนิเมชันพอดี ๆ</h3>
+        <p class="sub" style="margin:0">ใช้เฉพาะจุด: โฮเวอร์ค่อย ๆ ซูม, สครอลรีวีลนุ่ม ๆ เพื่อเน้นคอนเทนต์</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <h2 class="reveal">เกี่ยวกับ Paper</h2>
+    <p class="sub reveal">นักพัฒนาที่เชื่อว่า “ดีไซน์ดี = ใช้งานง่าย” และ “โค้ดสะอาด = ดูแลรักษาง่าย”</p>
+    <div class="tiles">
+      <div class="tile reveal" style="grid-column:span 12">
+        <div class="body">
+          <p>ผมชอบจัดวางแบบกริด 12 คอลัมน์ ใช้สีแบรนด์ <strong>#e6007e</strong> เป็นแค่ไฮไลต์ และให้พื้นที่ว่างทำงาน เพื่อความอ่านง่ายสไตล์ Apple‑style</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <h2 class="reveal">ติดต่อ</h2>
+    <p class="sub reveal">มาคุยกันเรื่องโปรเจกต์ใหม่ ๆ ได้เลย</p>
+    <form class="reveal" id="contactForm" style="max-width:720px">
+      <input type="text" id="name" placeholder="ชื่อ / Name" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:var(--bg); color:var(--text); margin-bottom:12px">
+      <input type="email" id="email" placeholder="อีเมล / Email" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:var(--bg); color:var(--text); margin-bottom:12px">
+      <textarea id="msg" rows="4" placeholder="ข้อความ / Message" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:var(--bg); color:var(--text);"></textarea>
+      <div style="height:12px"></div>
+      <button class="btn primary" type="submit">ส่งข้อความ</button>
+      <p class="sub" id="formHelp"></p>
+    </form>
+  </section>
+
+  <footer>© <span id="year"></span> Paper — portfolio</footer>
+
+  <script>
+    // Tiny reveal
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((es)=>{
+      es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.1}) : null;
+    if(io) document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Contact validation
+    document.getElementById('contactForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      if(!name || !email || !msg){ document.getElementById('formHelp').textContent = 'กรุณากรอกข้อมูลให้ครบ'; return; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ document.getElementById('formHelp').textContent = 'อีเมลไม่ถูกต้อง'; return; }
+      document.getElementById('formHelp').textContent = 'ส่งข้อความเรียบร้อย 🙌';
+      e.target.reset();
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
