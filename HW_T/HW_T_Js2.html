@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+        }
+        p{
+           font-size: larger; 
+        }
+        h3{
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function bmical(){
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value) / 100;
+            const BMI = weight / (height * height);
+            document.getElementById("bmi-result").textContent = "Result BMI : " + BMI.toFixed(2);
+        }
+        function unitcal(){
+            const WaterUnit = Number(document.getElementById("WaterUnit").value) * 10;
+            const ElectUnit = Number(document.getElementById("ElectUnit").value)* 25;
+            const Minute    = Number(document.getElementById("Minute").value)*5;
+            const Expense = WaterUnit + ElectUnit + Minute;
+            document.getElementById("WaterUnit-result").textContent = "WaterUnit : " + WaterUnit;
+            document.getElementById("ElectUnit-result").textContent = "ElectUnit : " + ElectUnit;
+            document.getElementById("Minute-result").textContent = "Minute : " + Minute;
+            document.getElementById("Expense-result").textContent = "Expense : " + Expense;
+        }
+        function bottlecal(){
+            const bottles = parseFloat(document.getElementById("bottle").value);
+            const dozens = Math.floor(bottles / 12);
+            const remain = (bottles % 12);
+            const total = (((dozens * 100) +(remain * 10))*1.07);
+            document.getElementById("sum").textContent = "Sum ( Include Vat 7 % ) : " + total.toFixed(2);
+        }
+    </script>
+      <h1>BMI-Calculate</h1>
+      <input type="number" id="weight" placeholder="input weight">
+      <input type="number" id="height" placeholder="input height">
+      <button onclick="bmical()">Calculate</button>
+      <p id="bmi-result">Result BMI :</p>
+
+      <br>
+
+      <h1>PowerUnit-Calculate</h1>
+      <h3>WaterUnit  10 Per THB</h3>
+      <h3>ElectUnit  25  Per THB</h3>
+      <h3>Minute     5  Per THB</h3>
+      <input type="number" id="WaterUnit" placeholder="input WaterUnit">
+      <input type="number" id="ElectUnit" placeholder="input ElectUnit">
+      <input type="number" id="Minute" placeholder="input Minute">
+      <button onclick="unitcal()">Calculate</button>
+      <p id="WaterUnit-result">WaterUnit :</p>
+      <p id="ElectUnit-result">ElectUnit :</p>
+      <p id="Minute-result">Minute :</p>
+      <p id="Expense-result">Expense :</p>
+
+      <br>
+      
+      <h1>Bottle-Calculate</h1>
+      <h3>1 bottle 10 thb</h3>
+      <h3>Promotion 12 bottles 100 thb ( Not include Vat 7 % )</h3>
+      <input type="number" id="bottle" placeholder="input bottle">
+      <button onclick="bottlecal()">Calculate</button>
+      <p id="sum">Sum ( Include Vat 7 % ) : </p>
+</body>
+</html>
