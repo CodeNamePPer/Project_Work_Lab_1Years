@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>While_Loop</title>
+<style>
+  *{
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+  }
+  p{
+    font-size: larger;
+  }
+  h3{
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<script>
+
+function str_length_While(){
+    let txt = document.getElementById("str_length").value 
+    let result = ""; //keep
+    let count = 0;
+
+    while(count < txt.length){
+        result += txt[count] +"!<br>";
+        count++;
+    }
+    document.getElementById("resultString").innerHTML = result;
+}
+
+
+function multimath_Do_While() {
+  let numMul = Number(document.getElementById("multiNum").value);
+  let count = 1;
+
+  document.getElementById("resultMulti").innerHTML = ""; //clear
+
+  do {
+    document.getElementById("resultMulti").innerHTML += numMul + " x " + count + " = " + (numMul * count) + "<br>";
+    count++;
+  } while (count <= 12);
+}
+</script>
+
+<h1>String.Length_While</h1>
+<input type="text" placeholder="input text" id="str_length">
+<button onclick="str_length_While()">Enter</button>
+<div id="resultString"></div>
+
+<h1>Math Multi Table_Do_While </h1>
+<input type="number" id="multiNum" placeholder="input Num">
+<button onclick="multimath_Do_While()">Enter</button>
+
+<div id="resultMulti"></div>
+
+</body>
+</html>
