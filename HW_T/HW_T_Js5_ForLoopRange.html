@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For_Loop</title>
+<style>
+  *{
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+  }
+  p{
+    font-size: larger;
+  }
+  h3{
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<script>
+
+function str_length_For_loop(){
+    let txt = document.getElementById("str_length").value 
+    let result = ""; //keep
+
+    for(let count = 0;  count < txt.length; count++){
+        result += txt[count] +"!<br>";
+        
+    }
+    document.getElementById("resultString").innerHTML = result;
+}
+
+
+function multimath_For_loop() {
+  let numMul = Number(document.getElementById("multiNum").value);
+
+  document.getElementById("resultMulti").innerHTML = ""; //clear
+
+  for(let count =1; count <= 12; count++){
+    document.getElementById("resultMulti").innerHTML += numMul + " x " + count + " = " + (numMul * count) + "<br>";
+  }
+}
+function numberAvg(){
+    let number1 = Number(document.getElementById("numrange1").value)
+    let number2 = Number(document.getElementById("numrange2").value)
+    document.getElementById("resultAvg").innerHTML = "";
+    for(let count = number1; count <= number2; count++){
+         
+    }
+}
+
+function numberOddEven_sum(){ //false
+    let number1 = Number(document.getElementById("num1").value)
+    let number2 = Number(document.getElementById("num2").value)
+    document.getElementById("resultOdd_sum").innerHTML = "";
+    
+    let even = 0;
+    let odd = 0;
+    if(number1>number2){
+        document.getElementById("resultOdd_sum").innerHTML = "Fail Range 1 > Range 2"
+    }else{
+        for(let count = number1; count <= number2; count++){
+            if(count % 2 == 0){
+                even += count;
+                console.log("Even : "+even)
+            } else {
+                odd += count;
+                console.log("Odd : "+odd)
+            }
+        }
+        let sum = odd + even;
+        document.getElementById("resultOdd_sum").innerHTML = "Even : " + even + " Odd : " + odd +"<br> Sum = "+ sum;
+    }
+    
+}
+</script>
+
+<h1>String.Length_For_Loop</h1>
+<input type="text" id="str_length" placeholder="Input text">
+<button onclick="str_length_For_loop()">Enter</button>
+<div id="resultString"></div>
+
+<h1>Math Multi Table_For_Loop </h1>
+<input type="number" id="multiNum" placeholder="Input Num">
+<button onclick="multimath_For_loop()">Enter</button>
+<div id="resultMulti"></div>
+
+<h1>Average Calculate</h1>
+<input type="number" id="numrange1"  placeholder="Input Num Range 1">
+<input type="number" id="numrange2"  placeholder="Input Num Range 2">
+<button onclick="numberAvg()">Enter</button>
+<div id="resultSum">Sum =</div>
+<div id="resultAvg">Avg =</div>
+
+<h1>Odd_Even Num Calculate Sum</h1>
+<input type="number" id="num1"  placeholder="Input Num Range 1">
+<input type="number" id="num2"  placeholder="Input Num Range 2">
+<button onclick="numberOddEven_sum()">Enter</button>
+<div id="resultOdd_sum">Sum =</div>
+
+</body>
+</html>
