@@ -2,44 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Multi-language Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Lab1</title>
+  <style>
+    *{
+      
+      font-size: large;
+    }
+  </style>
 </head>
 <body>
-  <div id="profile" class="profile"></div>
-  <button onclick="toggleLang()">เปลี่ยนภาษา</button>
+    <script>
+      function change(){
+        document.getElementById("text1").textContent = "Name : Jaidee Sabaidee";
+        document.getElementById("text2").textContent = "id : 67010101";
+        document.getElementById("text3").textContent = "Major : Computer Science";
+        document.getElementById("text4").textContent = "Year : 1st Year";
+        document.getElementById("text5").textContent = "Age : 21";
+        document.getElementById("text6").textContent = "Birthday : June 15,2000";
+        document.getElementById("text7").textContent = "Email : Jaidee@example.com";
+        document.getElementById("text8").textContent = "Phone : 081-2345678";
+        document.getElementById("text9").textContent = "Address : Bangkok 10400";
+        document.getElementById("text10").textContent = "Group : Technology";
+        
 
-  <script>
-    const profileData = {
-      th: `
-        ชื่อ: ใจดี สบายดี <br>
-        รหัสนักศึกษา: 67010101 <br>
-        สาขาวิชา: วิทยาการคอมพิวเตอร์ <br>
-        ชั้นปี: ปีที่ 1 <br>
-        อายุ: 21 ปี <br>
-        วันเกิด: 15 มิถุนายน 2543 <br>
-        อีเมล: krit@example.com <br>
-        โทรศัพท์: 081-2345678
-      `,
-      en: `
-        Name: Jaidee Sabaidee <br>
-        ID: 67010101 <br>
-        Major: Computer Science <br>
-        Year: 1st Year <br>
-        Age: 21 <br>
-        Birthday: June 15, 2000 <br>
-        Email: Jaidee@example.com <br>
-        Phone: 081-2345678
-      `
-    };
-    
-    let currentLang = "th";
-    document.getElementById("profile").innerHTML = profileData[currentLang];
-
-    function toggleLang() {
-      currentLang = (currentLang === "th") ? "en" : "th";
-      document.getElementById("profile").innerHTML = profileData[currentLang];
-    }
-  </script>
+      }
+    </script>
+    <p id="text1">ชื่อ : ใจดี สบายดี</p>
+    <p id="text2">รหัสนักศึกษา : 67010101</p>
+    <p id="text3">สาขาวิชา : วิทยาการคอมพิวเตอร์</p>
+    <p id="text4">ชั้นปี : ปีที่ 1</p>
+    <p id="text5">อายุ : 21 ปี</p>
+    <p id="text6">วันเกิด : 15 มิถุนายน 2543</p>
+    <p id="text7">อีเมล : krit@example.com</p>
+    <p id="text8">โทรศัพท์ : 081-2345678</p>
+    <p id="text9">ที่อยู่ : กรุงเทพมหานคร 10400</p>
+    <p id="text10">คณะ : เทคโนโลยี</p>
+    <button id="btn-change" onclick="change()">เปลี่ยนภาษา</button>
+  
 </body>
-<script src=""></script>
 </html>
