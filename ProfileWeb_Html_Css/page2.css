@@ -29,7 +29,7 @@ strong{
   padding: 10px;
   border-radius: 1rem;
   margin: 10px;
-  border:#e6007e solid 2px;
+  border:#e6007e solid 1px;
   font-weight: 900;
 }
 .btn-back:hover {
@@ -37,7 +37,7 @@ strong{
   color: #e6007e;
 }
 .box{
-    border: #e6007e solid 2px;
+    border: #e6007e solid 1px;
     height: auto;
     margin: auto;
     margin-bottom: 2rem;
@@ -53,3 +53,4 @@ strong{
   color: white;
   font-size: medium;
 }
+

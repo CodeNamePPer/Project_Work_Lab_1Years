@@ -17,15 +17,27 @@ a{
 h1{
     color: #f95bb2;
     margin: auto;
+    /* overflow: hidden; */
+    /* white-space: nowrap;
+    animation: typing 2s steps(30) infinite alternate-reverse; */
 }
+/* @keyframes typing {
+            from {
+                width: 0ch;
+            }
+            to {
+                width: 100%; 
+            }
+        }
+     */
 /* p{
     background-color: #dadada;
     border-radius: 0.5rem;
     padding: 10px;
 } */
 .logo-img{
-    width: 9rem; 
-    margin: 2rem;
+    width: 6rem;
+    margin: 10px; 
     /* border: #ecc0c0 solid 2px;
     border-bottom-left-radius: 1rem;
     border-top-right-radius: 4rem; */
@@ -37,24 +49,24 @@ strong{
   font-weight: 700;
   
 }
-hr{
-    margin: 0;
-    width: 100vw;
-}
+
 .navbar{
+    display: flex;                
+    justify-content: space-between; 
+    align-items: center;
+
     position: sticky;
     top: 0;
     z-index: 1000;  
-    border: #e6007e 2px solid;
+    border-bottom: #e6007e solid 1px;
     color: white;
-    background: rgba(255, 255, 255, 0.822);
+    background: rgba(255, 255, 255, 0.664);
     padding: 10px;
-    border-radius: 1rem;
     margin: auto;
-    width: 85vw;
     font-size: 1.5rem;
-    text-align: center;
     height: auto;
+
+    
 }
 #btn-nav:hover{
     background-color: white;
@@ -105,30 +117,27 @@ hr{
     margin: auto;
 }
 .box-profile-main{
+
     height:auto;
     width: 85vw;
-
+    text-align: center;
     align-items: center;
     padding: 10px;
     margin: auto;         
-                     
-    text-align:center;
     font-size: larger;
 
-    
-
-    background-color: rgb(255, 255, 255);
-    border-radius: 2rem;
-    border: 2px solid #e6007e;
+    border-radius: 1rem;
+    border: 1px solid #e6007e;
       
 }
 
 
 
 .about-video-box{
+    
     text-align: center;
-    border: 2px solid #e6007e;
-    border-radius: 2rem;
+    border: 1px solid #e6007e;
+    border-radius: 1rem;
     width: 85vw;
     height: auto;
     margin: auto;
@@ -145,8 +154,8 @@ hr{
   width: 85vw;
   margin: auto;
   padding: 1rem;
-  border: 2px solid #e6007e;
-  border-radius: 2rem;
+  border: 1px solid #e6007e;
+  border-radius: 1rem;
   font-size: 1.2rem;
 }
 
@@ -162,20 +171,19 @@ hr{
   height: 15rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  border: #e6007e solid 2px;
+  border: #e6007e solid 1px;
   margin-bottom: 0.5rem;
 }
 
 
 .box-profile-table{
     text-align: center;
-    background-color: rgb(255, 255, 255);
     width: 85vw;
     height: auto;
     margin: auto;
     padding: 1rem;
-    border: 2px solid #e6007e;
-    border-radius: 2rem;
+    border: 1px solid #e6007e;
+    border-radius: 1rem;
     font-size: 1.2rem;
 }
 thead,th,td{
@@ -202,40 +210,65 @@ table{
     padding: 10px;
     border-radius: 1rem;
     margin: 10px;
-    border:#e6007e solid 2px;
+    border:#e6007e solid 1px;
     font-weight: 900;
 }
 .btn-nextpage:hover{
     background-color: #ffffff;
     color: #e6007e;
 }
-
-.box-contact{
+.box-contact-foot{
     text-align: center;
     align-items: center;
     margin: auto;
-    padding: 5px;
-    width:  100vw;
+    padding: 10px;
+    width: 100%;
     height:auto;
-    background-color: #e6007e; 
+    background:#e6007e;
     color: white;
     font-size: 1rem;
+    box-sizing: border-box;
 }
-.box-contact a{
+.box-contact-foot a{
     margin: 1rem;
     font-size: 1.5rem;
     color: #ffffff;
     padding: 0.5rem;
     font-weight: 600;
+    transition: 0.2s;
 }
 
-.box-contact a:hover{
+.box-contact-foot a:hover{
     color: #e6007e;
-    border-radius: 1rem;
+    border-radius: 10px;
     background-color: white;
-    
 }
+.box-contact-top{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+    width:  100%;
+    height:auto;
+    background:#f737a0;
+    color: white;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    border-bottom: #ff66ba solid 2px;
 
+}
+.box-contact-top .item {
+  flex-basis: 100%;
+  font-size: 1.2rem;
+}
+.box-contact-top h2,
+.box-contact-top p {
+  margin: 0;
+}
 @media (max-width: 768px) {
   .navbar, .box-profile-main, .about-video-box, .hobbies-box, .box-profile-table {
       width: 95vw;
@@ -248,5 +281,16 @@ table{
   .hobbies-circle img {
       width: 7rem;
       height: 7rem;
+  }
+  .btn-link-1,
+  .btn-link-2,
+  .btn-link-3,
+  .btn-link-4,
+  .btn-link-5 {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 8px auto;
+    font-size: 1rem;
   }
 }
