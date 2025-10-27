@@ -69,47 +69,53 @@ strong{
     
 }
 #btn-nav:hover{
-    background-color: white;
     color: #e6007e;
     border: #e6007e solid 2px;
+    text-decoration: underline;
 }
+
 .btn-link-1{
-    background-color: green;
-    color: white;
+    color: #ff0000;
     padding: 10px;
     border-radius: 1rem;
     margin: 5px;
+    border: #ff0000 solid 1px;
+    background-color: rgb(255, 255, 255);
 }
 
 .btn-link-2{
-    background-color: blue;
-    color: white;
+    color: #ff7f00;
     padding: 10px;
     border-radius: 1rem;
     margin: 5px;
+    border: #ff7f00 solid 1px;
+    background-color: rgb(255, 255, 255);
 }
 
 .btn-link-3{
-    background-color: orangered;
-    color: white;
+    color: #8b00ff;
     padding: 10px;
     border-radius: 1rem;
     margin: 5px;
+    border: #8b00ff solid 1px;
+    background-color: rgb(255, 255, 255);
 }
 .btn-link-4{
-    background-color: #FBC02D;
-    color: white;
+    color: #0000ff;
     padding: 10px;
     border-radius: 1rem;
     margin: 5px;
+    border: #0000ff solid 1px;
+    background-color: rgb(255, 255, 255);
 }
 
 .btn-link-5{
-    background-color: #fc02fc;
-    color: white;
+    color: #26bb01;
     padding: 10px;
     border-radius: 1rem;
     margin: 5px;
+    border: #26bb01   solid 1px;
+    background-color: rgb(255, 255, 255);
 }
 
 .link-ref{
@@ -281,16 +287,5 @@ table{
   .hobbies-circle img {
       width: 7rem;
       height: 7rem;
-  }
-  .btn-link-1,
-  .btn-link-2,
-  .btn-link-3,
-  .btn-link-4,
-  .btn-link-5 {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    margin: 8px auto;
-    font-size: 1rem;
   }
 }
