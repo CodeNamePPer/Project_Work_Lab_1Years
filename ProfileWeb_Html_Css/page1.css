@@ -8,7 +8,7 @@ body{
     background-color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
-    
+
 }
 a{
     text-decoration: none;
@@ -20,6 +20,9 @@ h1{
     /* overflow: hidden; */
     /* white-space: nowrap;
     animation: typing 2s steps(30) infinite alternate-reverse; */
+}
+section{
+    margin: 50px 0;
 }
 /* @keyframes typing {
             from {
@@ -59,15 +62,14 @@ strong{
     position: sticky;
     top: 0;
     z-index: 1000;  
-    border-bottom: #e6007e solid 1px;
     color: white;
+    border-bottom: #e6007e solid 1px;
+    border-radius: 2rem;
     background: rgba(255, 255, 255, 0.664);
     padding: 10px;
     margin: auto;
     font-size: 1.5rem;
     height: auto;
-
-    
 }
 #btn-nav:hover{
     color: #e6007e;
@@ -120,23 +122,24 @@ strong{
 }
 
 .link-ref{
-    padding: 1rem;
+    padding: 1.5rem;
     margin: auto;
+    border-left: #e6007e dashed 2px;
+    border-right: #e6007e dashed 2px;
+    border-radius: 3rem;
 }
 .box-profile-main{
-    height:auto;
     width: 85vw;
+    height: auto;
     text-align: center;
     align-items: center;
     padding: 10px;
     margin: auto;         
     font-size: larger;
-
     border-radius: 1rem;
     border: 1px solid #e6007e;
+    background-color: white;
 }
-
-
 
 .about-video-box{
     
@@ -147,7 +150,7 @@ strong{
     height: auto;
     margin: auto;
     padding: 1rem;
-
+    background-color: white;
     font-size: larger;
 }
 
@@ -162,6 +165,7 @@ strong{
   border: 1px solid #e6007e;
   border-radius: 1rem;
   font-size: 1.2rem;
+  background-color: white;
 }
 
 .hobbies-circle {
@@ -190,6 +194,7 @@ strong{
     border: 1px solid #e6007e;
     border-radius: 1rem;
     font-size: 1.2rem;
+    background-color: white;
 }
 thead,th,td{
     background-color: #f89ccfb7;
@@ -206,7 +211,6 @@ table{
 }
 .link-table:hover{
     background-color: white;
-    border: #e6007e solid 2px;
 }
 
 .btn-nextpage{
@@ -265,6 +269,14 @@ table{
     box-sizing: border-box;
     border-bottom: #ff66ba solid 2px;
 
+}
+.box-contact-top .item {
+  flex-basis: 100%;
+  font-size: 1.2rem;
+}
+.box-contact-top h2,
+.box-contact-top p {
+  margin: 0; 
 }
 @media (max-width: 768px) {
   .navbar, .box-profile-main, .about-video-box, .hobbies-box, .box-profile-table {
