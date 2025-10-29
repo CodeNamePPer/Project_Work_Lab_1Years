@@ -35,6 +35,7 @@ h1{
     border-radius: 0.5rem;
     padding: 10px;
 } */
+
 .logo-img{
     width: 6rem;
     margin: 10px; 
@@ -76,7 +77,7 @@ strong{
 
 .btn-link-1{
     color: #ff0000;
-    padding: 10px;
+    padding: 8px;
     border-radius: 1rem;
     margin: 5px;
     border: #ff0000 solid 1px;
@@ -85,7 +86,7 @@ strong{
 
 .btn-link-2{
     color: #ff7f00;
-    padding: 10px;
+    padding: 8px;
     border-radius: 1rem;
     margin: 5px;
     border: #ff7f00 solid 1px;
@@ -94,7 +95,7 @@ strong{
 
 .btn-link-3{
     color: #8b00ff;
-    padding: 10px;
+    padding: 8px;
     border-radius: 1rem;
     margin: 5px;
     border: #8b00ff solid 1px;
@@ -102,7 +103,7 @@ strong{
 }
 .btn-link-4{
     color: #0000ff;
-    padding: 10px;
+    padding: 8px;
     border-radius: 1rem;
     margin: 5px;
     border: #0000ff solid 1px;
@@ -111,7 +112,7 @@ strong{
 
 .btn-link-5{
     color: #26bb01;
-    padding: 10px;
+    padding: 8px;
     border-radius: 1rem;
     margin: 5px;
     border: #26bb01   solid 1px;
@@ -123,7 +124,6 @@ strong{
     margin: auto;
 }
 .box-profile-main{
-
     height:auto;
     width: 85vw;
     text-align: center;
@@ -134,7 +134,6 @@ strong{
 
     border-radius: 1rem;
     border: 1px solid #e6007e;
-      
 }
 
 
@@ -266,14 +265,6 @@ table{
     box-sizing: border-box;
     border-bottom: #ff66ba solid 2px;
 
-}
-.box-contact-top .item {
-  flex-basis: 100%;
-  font-size: 1.2rem;
-}
-.box-contact-top h2,
-.box-contact-top p {
-  margin: 0;
 }
 @media (max-width: 768px) {
   .navbar, .box-profile-main, .about-video-box, .hobbies-box, .box-profile-table {
