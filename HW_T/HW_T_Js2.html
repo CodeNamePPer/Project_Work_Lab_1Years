@@ -41,7 +41,9 @@
             const dozens = Math.floor(bottles / 12);
             const remain = (bottles % 12);
             const total = (((dozens * 100) +(remain * 10))*1.07);
-            document.getElementById("sum").textContent = "Sum ( Include Vat 7 % ) : " + total.toFixed(2);
+            console.log(total)
+            document.getElementById("sum").textContent = "Sum ( Include Vat 7 % ) : " + Math.ceil(total);
+            
         }
     </script>
       <h1>BMI-Calculate</h1>
