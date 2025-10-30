@@ -17,3 +17,8 @@ console.log(y); // 10
 const z = 5;
 // z = 10; ❌ เปลี่ยนค่าไม่ได้
 console.log(z); // 5
+
+//ปัดเลข 
+Math.ceil  // ปัดขึ้น
+Math.floor // ปัดลง
+Math.round // ปัดตามหลักคณิต
