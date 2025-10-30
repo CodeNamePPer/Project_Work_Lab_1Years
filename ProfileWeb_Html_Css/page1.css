@@ -22,7 +22,7 @@ h1{
     animation: typing 2s steps(30) infinite alternate-reverse; */
 }
 section{
-    margin: 50px 0;
+    margin: 70px 0;
 }
 /* @keyframes typing {
             from {
@@ -54,7 +54,7 @@ strong{
   
 }
 
-.navbar{
+.bar{
     display: flex;                
     justify-content: space-between; 
     align-items: center;
@@ -64,16 +64,18 @@ strong{
     z-index: 1000;  
     color: white;
     border-bottom: #e6007e solid 1px;
-    border-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
     background: rgba(255, 255, 255, 0.664);
     padding: 10px;
     margin: auto;
     font-size: 1.5rem;
     height: auto;
 }
+
 #btn-nav:hover{
     color: #e6007e;
-    border: #e6007e solid 2px;
+    border: #e6007e solid 1px;
     text-decoration: underline;
 }
 
@@ -128,6 +130,7 @@ strong{
     border-right: #e6007e dashed 2px;
     border-radius: 3rem;
 }
+
 .box-profile-main{
     width: 85vw;
     height: auto;
