@@ -47,9 +47,19 @@ function numberAvg(){
     let number1 = Number(document.getElementById("numrange1").value)
     let number2 = Number(document.getElementById("numrange2").value)
     document.getElementById("resultAvg").innerHTML = "";
+    let sum = 0;
+    let avg = 0;
+    console.log("Input:"+number1)
+    console.log("Input:"+number2)
     for(let count = number1; count <= number2; count++){
-         
+        sum = sum+count; //+=
     }
+    console.log("Sum ="+ sum)
+    avg = sum / (number2 - number1 + 1); //Range in loop
+    console.log("Avg = "+ avg)
+
+    document.getElementById("resultSum").innerHTML = "Sum = "+sum
+    document.getElementById("resultAvg").innerHTML = "Avg = "+avg
 }
 
 function numberOddEven_sum(){ //false
@@ -60,7 +70,7 @@ function numberOddEven_sum(){ //false
     let even = 0;
     let odd = 0;
     if(number1>number2){
-        document.getElementById("resultOdd_sum").innerHTML = "Fail Range 1 > Range 2"
+        document.getElementById("resultOdd_sum").innerHTML = "Error Range 1 > Range 2"
     }else{
         for(let count = number1; count <= number2; count++){
             if(count % 2 == 0){
@@ -79,7 +89,7 @@ function numberOddEven_sum(){ //false
 </script>
 
 <h1>String.Length_For_Loop</h1>
-<input type="text" id="str_length" placeholder="Input text">
+<input type="text" id="str_length"   placeholder="Input text">
 <button onclick="str_length_For_loop()">Enter</button>
 <div id="resultString"></div>
 
@@ -88,7 +98,7 @@ function numberOddEven_sum(){ //false
 <button onclick="multimath_For_loop()">Enter</button>
 <div id="resultMulti"></div>
 
-<h1>Average Calculate</h1>
+<h1>Average Range Calculate</h1>
 <input type="number" id="numrange1"  placeholder="Input Num Range 1">
 <input type="number" id="numrange2"  placeholder="Input Num Range 2">
 <button onclick="numberAvg()">Enter</button>
