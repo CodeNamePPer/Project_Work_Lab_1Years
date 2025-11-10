@@ -19,15 +19,41 @@
 </style>
 </head>
 <body>
-    <script>
-        
-    </script>
+<script>
+function getBooks(){
+    let count = Number(document.getElementById("count").value);
+    let total = 0;
+    let bookprice = "";
 
+    document.getElementById("bookcount").innerHTML = ""; 
+    document.getElementById("result").textContent = "";
 
+    for(let booknum = 1; booknum <= count; booknum++){
+    let price = Number(prompt("Book Price " + booknum));
+    total += price;
+    bookprice += price;
+
+    document.getElementById("bookcount").innerHTML +="Book " + booknum + " = " + price +" THB"+ "<br>";
+}
+    
+    if(total >= 500){
+      total = total * 0.9;
+      console.log("-10% = "+ total  )
+      document.getElementById("result").textContent = "Total -10% = " + total.toFixed(2) + " THB";
+    }else{
+       document.getElementById("result").textContent = "Total  = " + total.toFixed(2) + " THB";
+    }
+   
+}
+</script>
     <h1>Book Store</h1>
-    <h2>Promotion</h2>
-    <input type="number" placeholder="Input: Num Book">
-    <button onclick="numbook()">Enter</button>
+    <h2>Promotion Buy > 500 Discount 10%</h2>
+    <input type="number" id="count" placeholder="Number Book">
+    <button onclick="getBooks()">Enter</button>
+    <div id="bookcount"></div>
+    <div id="result"></div>
+
+    
 
 </body>
 </html>
