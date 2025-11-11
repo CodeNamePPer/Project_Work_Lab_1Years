@@ -1,59 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Function Parameter</title>
-    <style>
-  *{
-    margin: 0;
-    padding: 10px;
-    text-align: center;
-  }
-  p{
-    font-size: larger;
-  }
-  h3{
-    font-weight: 600;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Parameter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 10px;
+      text-align: center;
+    }
+    p {
+      font-size: larger;
+    }
+    h3 {
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 <script>
-function getBooks(){
-    let count = Number(document.getElementById("count").value);
-    let total = 0;
-    let bookprice = "";
+    function getBooks() {
+      let countbook = Number(document.getElementById("count").value);
+      let total = 0;
+      document.getElementById("bookcount").innerHTML = "";
+      document.getElementById("result").textContent = "";
 
-    document.getElementById("bookcount").innerHTML = ""; 
-    document.getElementById("result").textContent = "";
-
-    for(let booknum = 1; booknum <= count; booknum++){
-    let price = Number(prompt("Book Price " + booknum));
-    total += price;
-    bookprice += price;
-
-    document.getElementById("bookcount").innerHTML +="Book " + booknum + " = " + price +" THB"+ "<br>";
-}
-    
-    if(total >= 500){
-      total = total * 0.9;
-      console.log("-10% = "+ total  )
-      document.getElementById("result").textContent = "Total -10% = " + total.toFixed(2) + " THB";
-    }else{
-       document.getElementById("result").textContent = "Total  = " + total.toFixed(2) + " THB";
+      for (let i = 1; i <= countbook; i++) {
+        let price = Number(prompt("Book Price " + i));
+        total += price;
+        document.getElementById("bookcount").innerHTML += "Book " + i + " = " + price + " THB<br>";
+      }
+      showResult(countbook, total);
     }
-   
-}
-</script>
-    <h1>Book Store</h1>
-    <h2>Promotion Buy > 500 Discount 10%</h2>
-    <input type="number" id="count" placeholder="Number Book">
-    <button onclick="getBooks()">Enter</button>
-    <div id="bookcount"></div>
-    <div id="result"></div>
 
+    function showResult(countbook, total) {
+      if (countbook >= 3 && total > 500) {
+        total = total * 0.9;
+        document.getElementById("result").textContent = 
+          "Total (Discount 10%) = " + total.toFixed(2) + " THB";
+      } else {
+        document.getElementById("result").textContent = 
+          "Total = " + total.toFixed(2) + " THB";
+      }
+    }
+  
+  function round(){
+      let n = Number(document.getElementById("round").value)
+      let total = 0
+      console.log(n)
+
+      document.getElementById("resultN").innerHTML = "";
+      document.getElementById("resultR").innerHTML = "";
+      for(let i = 0; i<n; i++){
+        let even = i* 2
+        total += even
+        console.log(even)
+        console.log(total)
+        document.getElementById("resultN").innerHTML += i+1+"."+ even + "<br>"
+      }
+    document.getElementById("resultR").innerHTML = "Total = " + total
+    return total;
     
+  }
+  </script>
 
+
+  <h1>Book Store ( Parameter countbook & total ) </h1>
+  <h2>Promotion : Buy 3 Book && 500 THB >>> Discount 10%</h2>
+  <input type="number" id="count" placeholder="Number of Books">
+  <button onclick="getBooks()">Enter</button>
+  <div id="bookcount"></div>
+  <div id="result">Total =</div>
+
+  <h1>Parameter Odd Even Sum</h1>
+  <input type="number" placeholder="Input Round" id="round">
+  <button onclick="round()">Enter</button>
+  <div id="resultN"></div>
+  <div id="resultR">Sum =</div>
 </body>
 </html>

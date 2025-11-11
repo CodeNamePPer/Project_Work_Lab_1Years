@@ -22,7 +22,10 @@
     <script>
     function ticketcal(){
         const height = Number(document.getElementById("height").value);
-        if(height<=130){
+        if(height < 0){
+            document.getElementById("price-ticket").textContent = "Error";
+        }
+        else if(height <=130){
             document.getElementById("price-ticket").textContent = "Ticket Price : 50 THB";
         }else{
             document.getElementById("price-ticket").textContent = "Ticket Price : 100 THB";
