@@ -21,4 +21,4 @@ console.log(z); // 5
 //ปัดเลข 
 Math.ceil  // ปัดขึ้น
 Math.floor // ปัดลง
-Math.round // ปัดตามหลักคณิต
+Math.round // ปัดตามหลักคณิต               
