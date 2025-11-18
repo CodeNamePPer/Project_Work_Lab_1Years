@@ -19,15 +19,46 @@
 </style>
 </head>
 <body>
+    <h1>Array Odd Even</h1>
+    <div>
+      <label for="">Input Round : </label>
+      <input type="number" id="round" placeholder="Input: Round Number">
+      <button onclick="arrayround()">Enter</button>
+    </div> 
+    <p id="show_arr">Show_Array : </p>
+    <div id="show_even"></div>
+    <div id="show_odd"></div>
+
+
     <script>
-        
+         const r = document.getElementById("round")
+
+    function arrayround(){
+      let round = parseInt(r.value)  
+      let arr_num = []                 
+
+      for(let i = 0; i < round; i++){
+        let num = parseInt(prompt("Input Number : " + (i+1)))
+        arr_num.push(num)              
+      }
+      console.log(arr_num)
+      document.getElementById("show_arr").innerHTML = "Show_Array : "+arr_num
+      
+      let even_sum = 0;
+      let odd_sum = 0;
+
+      for (let i = 0; i < arr_num.length; i++) {
+         if (arr_num[i] % 2 === 0) {
+            even_sum += arr_num[i];   
+         }else{
+            odd_sum += arr_num[i];    
+         }
+  }
+      document.getElementById("show_even").innerHTML = "Even Sum : " + even_sum;
+      document.getElementById("show_odd").innerHTML = "Odd Sum : " + odd_sum;
+}
+    
     </script>
-
-
-    <h1>Book Store</h1>
-    <h2>Promotion</h2>
-    <input type="number" placeholder="Input: Num Book">
-    <button onclick="numbook()">Enter</button>
-
 </body>
+
 </html>
