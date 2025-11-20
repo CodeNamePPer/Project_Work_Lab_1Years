@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game: Player vs AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1 class="game-title">Chess Challenge (AI)</h1>
+        
+        <div class="main-layout">
+            <div class="sidebar left-sidebar">
+                <div class="panel">
+                    <h2>You (White)</h2>
+                    <p>Name: <span id="player-name">Guest</span></p>
+                    <div class="turn-box">
+                        Turn: <span id="current-turn" class="turn-badge white-turn">White</span>
+                    </div>
+                    <button id="new-game-btn" class="btn primary">New Game</button>
+                    <button id="undo-btn" class="btn secondary" disabled>Undo</button>
+                </div>
+
+                <div class="panel">
+                    <h3>Leaderboard</h3>
+                    <ul id="leaderboard-list">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="chessboard" class="chessboard">
+                </div>
+
+            <div class="sidebar right-sidebar">
+                <div class="panel">
+                    <h2>Opponent (AI)</h2>
+                    <p>Status: <span id="game-status">Waiting...</span></p>
+                </div>
+                
+                <div class="panel history-panel">
+                    <h3>Move History</h3>
+                    <ul id="move-list">
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

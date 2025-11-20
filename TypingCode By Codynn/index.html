@@ -1,103 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypeTest - Modern Typing Speed Test</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Button Below Box</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column; /* เรียงแนวตั้ง (กล่อง บน ปุ่ม ล่าง) */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            color: #eee;
+            margin: 0;
+        }
+
+        /* --- กล่องเกม --- */
+        .container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 24px;
+            line-height: 1.5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        #quote-display {
+            position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            white-space: pre-wrap; 
+            word-break: break-word;
+            pointer-events: none;
+            color: #555;
+            z-index: 1;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+        }
+
+        #quote-input {
+            position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            background: transparent;
+            border: none;
+            outline: none;
+            resize: none;
+            color: transparent; 
+            caret-color: transparent; 
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            white-space: pre-wrap;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            z-index: 3;
+        }
+
+        /* --- ปุ่ม Start (ด้านล่าง) --- */
+        .control-area {
+            margin-top: 30px; /* เว้นระยะห่างจากกล่อง */
+            text-align: center;
+        }
+
+        #start-btn {
+            padding: 12px 40px;
+            font-size: 20px;
+            font-family: 'Sarabun', sans-serif;
+            font-weight: bold;
+            color: white;
+            background-color: #0078d7; /* สีฟ้า */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 120, 215, 0.3);
+            transition: transform 0.1s, background-color 0.2s;
+        }
+
+        #start-btn:hover {
+            background-color: #006cc1;
+            transform: translateY(-2px);
+        }
+
+        #start-btn:active {
+            transform: translateY(0);
+        }
+
+        /* --- Logic การเบลอ --- */
+        
+        /* 1. เบลอตัวหนังสือ */
+        .container.is-blurred #quote-display {
+            filter: blur(6px);
+            opacity: 0.3;
+        }
+
+        /* 2. ล็อคกล่องไม่ให้คลิกเอง (ต้องกดปุ่ม Start เท่านั้น) */
+        .container.is-blurred #quote-input {
+            pointer-events: none;
+        }
+
+        /* 3. ซ่อน Cursor ตอนเบลอ */
+        .container.is-blurred .active-char {
+            border-color: transparent !important;
+            animation: none !important;
+        }
+
+        /* Styles อื่นๆ (ถูก/ผิด/Cursor) */
+        .correct { color: #4caf50; }
+        .incorrect { color: #ff5252; text-decoration: underline; }
+        .active-char { border-left: 2px solid #ffa500; animation: blink 1s infinite; }
+        .cursor-at-end::after { content: ''; border-right: 2px solid #ffa500; animation: blink 1s infinite; margin-left: 2px; }
+        @keyframes blink { 0%, 100% { border-color: #ffa500; } 50% { border-color: transparent; } }
+    </style>
 </head>
 <body>
-    <div class="timer" id="timer">
-        <i class="fas fa-clock"></i>
-        <span>60</span>
+
+    <div class="container is-blurred" id="game-container">
+        <div id="quote-display"></div>
+        <textarea id="quote-input"></textarea>
     </div>
 
-    <div class="container">
-        <div class="header">
-            <h1 class="title">TypeTest</h1>
-            <p class="subtitle">Measure your typing speed and accuracy</p>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <i class="fas fa-tachometer-alt stat-icon"></i>
-                <div class="stat-value" id="wpm">0</div>
-                <div class="stat-label">WPM</div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-bullseye stat-icon"></i>
-                <div class="stat-value" id="accuracy">100</div>
-                <div class="stat-label">Accuracy</div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-keyboard stat-icon"></i>
-                <div class="stat-value" id="characters">0</div>
-                <div class="stat-label">Characters</div>
-            </div>
-        </div>
-
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="progress-text" id="progressText">Ready to start</div>
-        </div>
-
-        <div class="text-container">
-            <div class="text-content" id="textContent"></div>
-        </div>
-
-        <div class="input-section">
-            <input 
-                type="text" 
-                class="typing-input" 
-                id="typingInput" 
-                placeholder="Click start to begin typing..." 
-                disabled
-                autocomplete="off"
-                spellcheck="false"
-            >
-        </div>
-
-        <div class="controls">
-            <button class="btn btn-primary" id="startBtn">
-                <i class="fas fa-play"></i>
-                Start Test
-            </button>
-            <button class="btn btn-secondary" id="resetBtn">
-                <i class="fas fa-redo"></i>
-                Reset
-            </button>
-        </div>
+    <div class="control-area">
+        <button id="start-btn" onclick="startGame()">เริ่มพิมพ์ / แก้ไขต่อ</button>
     </div>
 
-    <div class="results-modal" id="resultsModal">
-        <div class="results-content">
-            <h2 class="results-title">Test Complete!</h2>
-            <div class="results-stats">
-                <div class="results-stat">
-                    <div class="results-stat-value" id="finalWpm">0</div>
-                    <div class="results-stat-label">WPM</div>
-                </div>
-                <div class="results-stat">
-                    <div class="results-stat-value" id="finalAccuracy">100</div>
-                    <div class="results-stat-label">Accuracy</div>
-                </div>
-                <div class="results-stat">
-                    <div class="results-stat-value" id="finalCharacters">0</div>
-                    <div class="results-stat-label">Characters</div>
-                </div>
-            </div>
-            <button class="btn btn-primary" onclick="closeResults()">
-                <i class="fas fa-redo"></i>
-                Try Again
-            </button>
-        </div>
-    </div>
+    <script>
+        const container = document.getElementById('game-container');
+        const quoteDisplayElement = document.getElementById('quote-display');
+        const quoteInputElement = document.getElementById('quote-input');
 
-    <script src="script.js">
-     
+        const textToType = "การเขียนโค้ด คือศิลปะ อย่างหนึ่ง lorem wadwddddddddddddddd";
+        const allowBackspace = false;
+
+        quoteInputElement.setAttribute('maxlength', textToType.length);
+
+        function renderQuote() {
+            quoteDisplayElement.innerHTML = '';
+            textToType.split('').forEach((character, index) => {
+                const characterSpan = document.createElement('span');
+                characterSpan.innerText = character;
+                if(index === 0) characterSpan.classList.add('active-char');
+                quoteDisplayElement.appendChild(characterSpan);
+            });
+        }
+        renderQuote();
+
+        // --- ฟังก์ชันปุ่ม Start ---
+        function startGame() {
+            // บังคับให้กล่องรับ Focus (ซึ่งจะทำให้ Event 'focus' ทำงาน)
+            quoteInputElement.focus();
+        }
+
+        // --- Event Listeners ---
+        
+        // เมื่อกล่องได้รับ Focus (จากการกดปุ่ม) -> หายเบลอ
+        quoteInputElement.addEventListener('focus', () => {
+            container.classList.remove('is-blurred');
+        });
+
+        // เมื่อคลิกข้างนอก -> กลับไปเบลอ และล็อค
+        quoteInputElement.addEventListener('blur', () => {
+            container.classList.add('is-blurred');
+        });
+
+        // --- Logic พิมพ์ ---
+        quoteInputElement.addEventListener('keydown', function(e) {
+            if (!allowBackspace && e.key === 'Backspace') { e.preventDefault(); return; }
+            if (e.code === 'Space') {
+                e.preventDefault();
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                this.value = this.value.substring(0, start) + "\n" + this.value.substring(end);
+                this.selectionStart = this.selectionEnd = start + 1;
+                this.dispatchEvent(new Event('input'));
+            }
+        });
+
+        quoteInputElement.addEventListener('input', () => {
+            const arrayQuote = quoteDisplayElement.querySelectorAll('span');
+            const arrayValue = quoteInputElement.value.split('');
+
+            arrayQuote.forEach(span => {
+                span.classList.remove('active-char');
+                span.classList.remove('cursor-at-end');
+            });
+
+            arrayQuote.forEach((characterSpan, index) => {
+                const character = arrayValue[index];
+                const targetChar = characterSpan.innerText;
+
+                if (character == null) {
+                    characterSpan.classList.remove('correct');
+                    characterSpan.classList.remove('incorrect');
+                } 
+                else if (character === targetChar || (character === '\n' && targetChar === ' ')) {
+                    characterSpan.classList.add('correct');
+                    characterSpan.classList.remove('incorrect');
+                } 
+                else {
+                    characterSpan.classList.remove('correct');
+                    characterSpan.classList.add('incorrect');
+                }
+            });
+
+            if (arrayValue.length < arrayQuote.length) {
+                arrayQuote[arrayValue.length].classList.add('active-char');
+            } else {
+                arrayQuote[arrayQuote.length - 1].classList.add('cursor-at-end');
+            }
+        });
     </script>
+
 </body>
 </html>

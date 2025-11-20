@@ -51,15 +51,20 @@ function numberAvg(){
     let avg = 0;
     console.log("Input:"+number1)
     console.log("Input:"+number2)
-    for(let count = number1; count <= number2; count++){
+    if(number1 > number2){
+      document.getElementById("resultSum").innerHTML = " "
+      document.getElementById("resultAvg").innerHTML = "Error Range First > Range Last"
+    }else{
+      for(let count = number1; count <= number2; count++){
         sum = sum+count; //+=
     }
-    console.log("Sum ="+ sum)
-    avg = sum / (number2 - number1 + 1); //Range in loop
-    console.log("Avg = "+ avg)
-
+        console.log("Sum ="+ sum)
+        avg = sum / (number2 - number1 + 1); //Range in loop
+        console.log("Avg = "+ avg)
     document.getElementById("resultSum").innerHTML = "Sum = "+sum
     document.getElementById("resultAvg").innerHTML = "Avg = "+avg
+    }
+    
 }
 
 function numberOddEven_sum(){ //false
@@ -70,7 +75,7 @@ function numberOddEven_sum(){ //false
     let even = 0;
     let odd = 0;
     if(number1>number2){
-        document.getElementById("resultOdd_sum").innerHTML = "Error Range 1 > Range 2"
+        document.getElementById("resultOdd_sum").innerHTML = "Error Range First > Range Last"
     }else{
         for(let count = number1; count <= number2; count++){
             if(count % 2 == 0){
@@ -99,15 +104,15 @@ function numberOddEven_sum(){ //false
 <div id="resultMulti"></div>
 
 <h1>Average Range Calculate</h1>
-<input type="number" id="numrange1"  placeholder="Input Num Range 1">
-<input type="number" id="numrange2"  placeholder="Input Num Range 2">
+<input type="number" id="numrange1"  placeholder="Input Num Range First">
+<input type="number" id="numrange2"  placeholder="Input Num Range Last">
 <button onclick="numberAvg()">Enter</button>
 <div id="resultSum">Sum =</div>
 <div id="resultAvg">Avg =</div>
 
 <h1>Odd_Even Num Calculate Sum</h1>
-<input type="number" id="num1"  placeholder="Input Num Range 1">
-<input type="number" id="num2"  placeholder="Input Num Range 2">
+<input type="number" id="num1"  placeholder="Input Num Range First">
+<input type="number" id="num2"  placeholder="Input Num Range Last">
 <button onclick="numberOddEven_sum()">Enter</button>
 <div id="resultOdd_sum">Sum =</div>
 
