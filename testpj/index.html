@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superlek</title>
+    <link rel="stylesheet" href="styles.css">
+
+<body>
+    <div class="progress">
+        <style>
+    .progress {
+        position: relative;
+        width: 400px;
+        height: 30px;
+        background: #575757;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 0 auto ;
+    }
+
+    .progress_fill {
+        height: 100%;
+        width: 0%;
+        background: #1C1C1C;
+    }
+
+    .progress_text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="progress">
+    <div class="progress_fill"></div>
+    <span class="progress_text">0%</span>
+</div>
+
+<script>
+function updateProgressBar(value) {
+    value = Math.round(value);
+    document.querySelector('.progress_fill').style.width = `${value}%`;
+    document.querySelector('.progress_text').textContent = `${value}%`;
+}
+
+updateProgressBar(20); 
+</script>
+
+    </div>
+    
+    
+    <header class="Parent">
+        <h1 class="My_Logo">Logo</h1>
+        <a href="#" class="Multi">Multi Player</a>
+    </header>
+
+    <div class="inputbox"> <!-- ตรงนี้ทีม backend ปรับได้เต็มที่เลย  -->
+        <p id="Timer" class="Timer">--</p>
+
+        <script>
+            let Timer = document.getElementById("Timer")
+            let time = 30
+
+            let countdown = () => {
+                if (time >= 0){
+                Timer.innerText = time; 
+                time--;
+                } else{
+                    clearInterval(interval)
+                }
+            }
+
+            const interval = setInterval(countdown, 1000)
+        </script>
+
+        <textarea class="autotextarea" placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ut qui non voluptatibus tempore impedit odit sapiente vel perspiciatis minus adipisci eum, voluptate error sint nesciunt est at autem beatae."></textarea>
+    </div> 
+
+    <div class="restart">
+        <span class="text">restart</span> 
+        <span class="f2">F2</span> 
+        <span class="text">test</span> 
+    </div>
+
+
+
+    <footer>
+    <div class="shadow-box"></div>
+    </footer>
+</body>
+</html>

@@ -40,15 +40,11 @@ function multimath_Do_While() {
   let count = 1;
 
   document.getElementById("resultMulti").innerHTML = ""; //clear
-  if(numMul <= 0){
-    document.getElementById("resultMulti").innerHTML += "Num <= 0";
-  }else{
-    do {
+
+  do {
     document.getElementById("resultMulti").innerHTML += numMul + " x " + count + " = " + (numMul * count) + "<br>";
     count++;
   } while (count <= 12);
-  }
-  
 }
 </script>
 

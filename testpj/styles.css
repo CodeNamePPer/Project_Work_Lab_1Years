@@ -1,0 +1,135 @@
+@font-face {
+    font-family: JetBrainsMono-Bold;
+    src: url(font/JetBrainsMono-Bold.ttf);
+}
+
+@font-face {
+    font-family: JetBrainsMono-Medium;
+    src: url(font/JetBrainsMono-Medium.ttf);
+}
+* {
+    font-family: JetBrainsMono-Bold;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; 
+}
+
+body {
+    background-color: #090909;
+    width: 100vw;
+}
+
+.Parent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;          
+    padding: 0 14%;                 
+    box-sizing: border-box;
+}
+
+.My_Logo{
+    font-size: clamp(0.975rem, 1.2vw, 0.975rem);
+    color: #f0f0f0;
+    display: block;
+    margin-left: 14%;
+    line-height: 1; 
+    transform: translateY(30px); 
+    transform-origin: left top; 
+    
+}
+
+.Multi {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 14%;
+    font-size: clamp(0.875rem, 0.1vw, 0.875rem);
+    padding: clamp(0.699rem, 0.699vw, 0.699rem);
+    font-family: JetBrainsMono-Medium;
+    color: #d6d6d6;
+    background: linear-gradient(180deg,#1C1C1C 0%,#2D2D2D 100%);
+    transform: translateY(30px);
+    transform-origin: right top;
+    border: 0.475px solid; 
+    border-image: linear-gradient(180deg, #D7D7D7, #414141, #969696) 1;
+    text-decoration: none;
+    transition: background-color 0.375s ease, color 0.375s ease;
+    z-index: 1;
+}
+
+.Multi:hover {
+    background: #d6d6d6; 
+    color: #000000;     
+}
+
+
+
+.Timer{
+    font-size: clamp(1.15rem, 1.2vw, 1.15rem);
+    display: block;
+    color: #bdbdbd;
+    text-align: center;
+    transform: translateY(460px);
+}
+
+textarea.autotextarea {
+    display: block;
+    margin: 37vh auto 0 auto;
+    width: 37.5vw;
+    font-size: clamp(1.125rem, 2vw, 2rem);
+    text-align: left;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+    background: linear-gradient(180deg, #E0E0E0 22%, #bdbdbd 100%);
+    font-family: JetBrainsMono-Medium;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.f2 {
+    position: relative;
+    font-size: clamp(0.5rem, 0.9vw, 0.7rem);
+    font-family: JetBrainsMono-Medium;
+    padding: clamp(0.08rem, 0.18vw, 0.15rem) clamp(0.12rem, 0.25vw, 0.18rem);
+    background: linear-gradient(180deg,#575757 0%,#000000 100%); 
+    color: rgb(228, 228, 228);
+    border: 0.5px solid; 
+    border-image: linear-gradient(45deg, #f0f0f0, #575757, #f0f0f0) 1;
+    transition: transform 0.2s ease;
+}
+
+.text {
+    color: #5C5C5C;
+}
+
+
+
+.restart {
+    text-align: center;
+    margin-top: 2.1rem;
+    font-size: clamp(0.875rem, 1.2vw, 0.875rem);
+}
+
+.shadow-box {
+  width: 517px;
+  margin: 1px auto;
+  border: 0.05px solid; 
+  transform: translateY(595px); 
+  border-image: linear-gradient(45deg, #000000, #919191, #000000) 0.5;
+}
