@@ -25,13 +25,18 @@
       let total = 0;
       document.getElementById("bookcount").innerHTML = "";
       document.getElementById("result").textContent = "";
-
-      for (let i = 1; i <= countbook; i++) {
+      if(countbook <=0){
+        document.getElementById("result").textContent = "Num < 0";
+        return;
+      }else{
+        for (let i = 1; i <= countbook; i++) {
         let price = Number(prompt("Book Price " + i));
         total += price;
         document.getElementById("bookcount").innerHTML += "Book " + i + " = " + price + " THB<br>";
       }
       showResult(countbook, total);
+      }
+      
     }
 
     function showResult(countbook, total) {
