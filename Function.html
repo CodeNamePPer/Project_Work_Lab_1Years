@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parameter_Argument</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 10px;
+      text-align: center;
+    }
+
+    p {
+      font-size: larger;
+    }
+
+    h3 {
+      font-weight: 600;
+    }
+
+    hr {
+      padding: 0;
+      margin: 30px;
+    }
+  </style>
+</head>
+</head>
+
+<body>
+  <h1>Function : Parameter & Argument</h1>
+  <div>
+    <label for="">Input Name</label>
+    <input type="text" id="name">
+  </div>
+  <div>
+    <label for="" id="result"></label>
+  </div>
+  <button onclick="main()">OK (Type1)!</button>
+  <button onclick="main1()">OK (Type2)</button>
+  <br>
+  <hr>
+  <br>
+  <h2>Triangle</h2>
+  <div>
+    <label for="">Input Base : </label>
+    <input type="number" name="" id="base">
+  </div>
+  <div>
+    <label for="">Input Height : </label>
+    <input type="number" name="" id="height">
+  </div>
+  <div>
+    <label for="" id="result1"></label>
+  </div>
+  <button onclick="main2()">Calculate (Type2)</button>
+  <button onclick="main3()">Calculate (Type3)</button>
+  <button onclick="main4()">Calculate (Type4)!</button>
+
+
+  <script>
+    const out = document.getElementById("result")
+    const n = document.getElementById("name")
+    const b = document.getElementById("base")
+    const h = document.getElementById("height")
+    const out1 = document.getElementById("result1")
+
+    console.log(out)
+    function main() {
+      console.log("Main")
+      showHello();
+    }
+    function main1() {
+      let name = n.value
+      showHello1(name)
+    }
+
+    function main2() {
+      let base = parseFloat(b.value)
+      let height = parseFloat(h.value)
+      areaofTriangle(base, height)
+      console.log("main2")
+    }
+
+    function main3() {
+      // let a = areaofTriangle1()
+      out1.innerHTML = "area = " + areaofTriangle1() + " (type3)"
+      console.log("main3")
+    }
+    function main4() {
+      let base = parseFloat(b.value)
+      let height = parseFloat(h.value)
+      out1.innerHTML = "area = " + areaofTriangle2(base,height) + " (type4)"
+    }
+    function areaofTriangle(base, height) {
+      let area = 0.5 * base * height
+      out1.innerHTML = "area = " + area + " (type2)"
+    }
+
+    function areaofTriangle1() {
+      let base = parseFloat(b.value)
+      let height = parseFloat(h.value)
+      let area = 0.5 * base * height
+      return area
+    }
+    function areaofTriangle2(base,height){
+      // let area = 0.5 * base * height
+      // return area
+      return 0.5 * base * height
+    }
+
+
+    function showHello() {
+      out.innerHTML = "Hello, Lisa"
+    }
+
+    function showHello1(name) {
+      out.innerHTML = "Hello, " + name
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
