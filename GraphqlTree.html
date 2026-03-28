@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tree Interactive Visualization</title>
+    <!-- โหลด D3.js library สำหรับวาดกราฟ -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --text-main: #f8fafc;
+            --link-color: #475569;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        p.desc {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        #tree-container {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* SVG Styles */
+        .node circle {
+            fill: var(--card-bg);
+            stroke: var(--primary);
+            stroke-width: 3px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
+        }
+
+        .node circle:hover {
+            fill: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .node text {
+            font: 16px 'Inter', sans-serif;
+            font-weight: 600;
+            fill: var(--text-main);
+            text-anchor: middle;
+            dominant-baseline: central;
+            pointer-events: none;
+        }
+
+        .node:hover text {
+            fill: #fff;
+        }
+
+        .link {
+            fill: none;
+            stroke: var(--link-color);
+            stroke-width: 2.5px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Interactive Binary Tree</h1>
+    <p class="desc">
+        กราฟนี้สร้างขึ้นโดยใช้ไลบรารี <strong>D3.js</strong> ซึ่งเป็นที่นิยมในการทำ Data Visualization
+    </p>
+
+    <div id="tree-container"></div>
+
+    <script>
+        // ข้อมูลตัวอย่างสำหรับ Binary Tree
+        const treeData = {
+            name: "50",
+            children: [
+                {
+                    name: "30",
+                    children: [
+                        {
+                            name: "20",
+                            children: [
+                                { name: "10" },
+                                { name: "25" }
+                            ]
+                        },
+                        {
+                            name: "40",
+                            children: [
+                                { name: "35" },
+                                { name: "45" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "70",
+                    children: [
+                        {
+                            name: "60",
+                            children: [
+                                { name: "55" },
+                                { name: "65" }
+                            ]
+                        },
+                        {
+                            name: "80",
+                            children: [
+                                { name: "75" },
+                                { name: "90" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // กำหนดขนาดและ margin
+        const margin = { top: 50, right: 50, bottom: 50, left: 50 },
+            width = 900 - margin.left - margin.right,
+            height = 600 - margin.top - margin.bottom;
+
+        // สร้าง SVG ลงใน container
+        const svg = d3.select("#tree-container").append("svg")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // สร้าง layout สำหรับ tree
+        const treemap = d3.tree().size([width, height]);
+
+        // แปลงข้อมูลเป็น hierarchy
+        let nodes = d3.hierarchy(treeData, d => d.children);
+
+        // คำนวณตำแหน่ง (x, y) ของแต่ละ node
+        nodes = treemap(nodes);
+
+        // วาดเส้นเชื่อม (links)
+        svg.selectAll(".link")
+            .data(nodes.descendants().slice(1))
+            .enter().append("path")
+            .attr("class", "link")
+            .attr("d", d => {
+                return `M${d.x},${d.y}
+                       C${d.x},${(d.y + d.parent.y) / 2}
+                        ${d.parent.x},${(d.y + d.parent.y) / 2}
+                        ${d.parent.x},${d.parent.y}`;
+            });
+
+        // สร้าง group สำหรับแต่ละ node
+        const node = svg.selectAll(".node")
+            .data(nodes.descendants())
+            .enter().append("g")
+            .attr("class", d => "node" + (d.children ? " node--internal" : " node--leaf"))
+            .attr("transform", d => `translate(${d.x},${d.y})`);
+
+        // วาดวงกลมให้ node
+        node.append("circle")
+            .attr("r", 24);
+
+        // ใส่ข้อความ (ตัวเลข) ลงใน node
+        node.append("text")
+            .text(d => d.data.name);
+
+    </script>
+</body>
+
+</html>

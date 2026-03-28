@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Expression Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        input {
+            width: 300px;
+            padding: 5px;
+        }
+        button {
+            padding: 6px 10px;
+            margin: 5px;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Expression Calculator</h2>
+
+<input type="text" id="expression" placeholder="ใส่นิพจน์ เช่น 3 4 + หรือ + 3 4">
+
+<br><br>
+
+<button onclick="calculateInfix()">Infix (+-*/)</button>
+<button onclick="calculatePostfix()">Postfix</button>
+<button onclick="calculatePrefix()">Prefix</button>
+
+<div id="result"></div>
+
+<script>
+
+function calculateInfix() {
+    let exp = document.getElementById("expression").value;
+    try {
+        let result = eval(exp);
+        document.getElementById("result").innerHTML = "Result: " + result;
+    } catch {
+        document.getElementById("result").innerHTML = "Invalid Expression";
+    }
+}
+
+function calculatePostfix() {
+    let exp = document.getElementById("expression").value.split(" ");
+    let stack = [];
+
+    exp.forEach(token => {
+        if (!isNaN(token)) {
+            stack.push(Number(token));
+        } else {
+            let b = stack.pop();
+            let a = stack.pop();
+            stack.push(applyOperator(a, b, token));
+        }
+    });
+
+    document.getElementById("result").innerHTML = "Result: " + stack.pop();
+}
+
+function calculatePrefix() {
+    let exp = document.getElementById("expression").value.split(" ").reverse();
+    let stack = [];
+
+    exp.forEach(token => {
+        if (!isNaN(token)) {
+            stack.push(Number(token));
+        } else {
+            let a = stack.pop();
+            let b = stack.pop();
+            stack.push(applyOperator(a, b, token));
+        }
+    });
+
+    document.getElementById("result").innerHTML = "Result: " + stack.pop();
+}
+
+function applyOperator(a, b, op) {
+    switch (op) {
+        case "+": return a + b;
+        case "-": return a - b;
+        case "*": return a * b;
+        case "/": return a / b;
+        default: return 0;
+    }
+}
+
+</script>
+
+</body>
+</html>
